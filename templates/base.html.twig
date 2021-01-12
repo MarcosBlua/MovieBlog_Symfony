@@ -11,6 +11,31 @@
         {% endblock %}
     </head>
     <body>
+        <div class="jumbotron header" style="margin-bottom: 0px;">
+		    <img src="Logo.jpg" height="200px" style="border-radius: 50%"> </img>
+		    <h1>Maxi Cortés</h1>
+	    </div>
+	
+	    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+			    <span class="navbar-toggler-icon"></span>
+			</button>
+	
+		    <div class="collapse navbar-collapse" id="myNavbar">
+			    <ul class="navbar-nav mr-auto mx-auto mt-2 mt-md-0">
+			        <li class="nav-item activa"><a class="nav-link" href="Home.html">Home</a></li>
+			        <li class="nav-item"><a class="nav-link" href="Galeria.html">Galeria</a></li>
+			        <li class="nav-item"><a class="nav-link" href="Pedido.html">Pedido Personalizado</a></li>
+			        <li class="nav-item"><a class="nav-link" href="SobreMi.html">Sobre mi</a></li>
+			    </ul>
+			</br>
+		    </div>
+	    </nav>
+
+        <div class="footer">
+		    <a href="https://twitter.com/marcosblua" target="_blank"><img src="https://img.icons8.com/nolan/64/twitter-circled.png" width="30px" height="30px"></a> Derechos de este sitio reservados a Marcos Blua.
+	    </div>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
