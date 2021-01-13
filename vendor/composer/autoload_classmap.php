@@ -6,6 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Controller\\RecomendacionController' => $baseDir . '/src/Controller/RecomendacionController.php',
+    'App\\Entity\\RecomendacionPelicula' => $baseDir . '/src/Entity/RecomendacionPelicula.php',
+    'App\\Form\\RecomendacionType' => $baseDir . '/src/Form/RecomendacionType.php',
+    'App\\Kernel' => $baseDir . '/src/Kernel.php',
+    'App\\Repository\\RecomendacionPeliculaRepository' => $baseDir . '/src/Repository/RecomendacionPeliculaRepository.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
     'Collator' => $vendorDir . '/symfony/intl/Resources/stubs/Collator.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
