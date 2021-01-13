@@ -28,7 +28,7 @@ class RecomendacionPelicula
     private $imagenSRC;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="text")
      */
     private $sinopsis;
 
