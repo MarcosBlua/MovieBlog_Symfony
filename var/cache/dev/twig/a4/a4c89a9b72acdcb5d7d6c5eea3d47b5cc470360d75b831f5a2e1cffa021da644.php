@@ -87,7 +87,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
             // line 34
             echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-            echo "\"><i class=\"fas fa-edit\"></i>Iniciar Sesión </a></li>
+            echo "\"><i class=\"fas fa-edit\"></i> Iniciar Sesión </a></li>
     \t\t\t\t";
         }
         // line 36
@@ -280,7 +280,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t\t{% if app.user %}
         \t\t\t\tMostrar foto de perfil clickeable
 \t\t\t\t\t{% else %}
-\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('app_login') }}\"><i class=\"fas fa-edit\"></i>Iniciar Sesión </a></li>
+\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('app_login') }}\"><i class=\"fas fa-edit\"></i> Iniciar Sesión </a></li>
     \t\t\t\t{% endif %}
 \t\t\t\t</ul>
 \t\t\t</div>
