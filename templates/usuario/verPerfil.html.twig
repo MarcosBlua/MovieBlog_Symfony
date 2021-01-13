@@ -3,6 +3,27 @@
 {% block body %}
 {{parent()}} 
 
+<div class="container" style="text-align:center">
+    <img src="{{ asset("Logo.png") }}" width="170px" heigth="170px" style="border-radius: 100%;"/>
+    <h1 style="text-align:center"> <b> usuario.username </b> </h1>
+</div>
 
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+	<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
+	    <span class="navbar-toggler-icon"></span>
+	</button>
+	
+	<div class="collapse navbar-collapse" id="myNavbar">
+		<ul class="navbar-nav mr-auto mx-auto mt-2 mt-md-0">
+			<li class="nav-item activa"><a class="nav-link" href="Perfil.html">Perfil</a></li>
+			<li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
+			<li class="nav-item"><a class="nav-link" href="Recomendaciones.html">Recomendaciones</a></li>
+		</ul>
+	</div>
+</nav>
+
+<div class="container forma" style="width: 80%;">
+
+</div>
 
 {% endblock %}
