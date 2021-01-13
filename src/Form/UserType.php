@@ -6,6 +6,7 @@ use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\SubmitType;
 
 class UserType extends AbstractType
 {
@@ -13,8 +14,9 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('roles')
+            //->add('roles')
             ->add('password')
+            ->add('Aceptar', SubmitType::class)
         ;
     }
 

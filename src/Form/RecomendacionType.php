@@ -6,6 +6,7 @@ use App\Entity\RecomendacionPelicula;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\SubmitType;
 
 class RecomendacionType extends AbstractType
 {
@@ -21,6 +22,7 @@ class RecomendacionType extends AbstractType
             ->add('elenco')
             ->add('trailer')
             ->add('descarga')
+            ->add('Aceptar', SubmitType::class)
         ;
     }
 
