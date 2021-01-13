@@ -10,9 +10,30 @@
     <div class="container forma">
         <br>
 
-        {{form(formulario)}}
+        <h1 style="text-align:center"> Registro </h1>
 
         <br>
+
+        {{form_start(formulario)}}
+
+        <div class="form-group">
+                <label for="inputUsername"> Usuario: </label>
+
+                {{form_widget(formulario.username, { 'attr': {'class': 'form-control'} })}}
+        </div>
+
+        <div class="form-group">
+                <label for="inputPassword"> Contraseña: </label>
+
+                {{form_widget(formulario.password, { 'attr': {'class': 'form-control'} })}}            
+        </div>
+
+        {{form_end(formulario)}}
+
+        <br>
+
     </div>
+
+    <br>
 
 {% endblock %}
