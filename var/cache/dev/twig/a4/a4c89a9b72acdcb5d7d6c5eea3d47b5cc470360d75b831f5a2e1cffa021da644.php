@@ -58,9 +58,12 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
         // line 13
         echo "    </head>
 
-    <body>
+    <body style=\"display: flex; flex-direction: column;\">
         <div class=\"header\" style=\"text-align:center\">
-\t\t\t<img src=\"Logo.png\" width=\"170px\" heigth=\"170px\" />
+\t\t\t<img src=\"";
+        // line 17
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Logo.png"), "html", null, true);
+        echo "\" width=\"170px\" heigth=\"170px\" />
 \t\t</div>
 
 \t\t<nav class=\"navbar navbar-expand-md navbar-light bg-light sticky-top\">
@@ -82,7 +85,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t\t";
         } else {
             // line 34
-            echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"Inicio Sesion.html\"><i class=\"fas fa-edit\"></i>Iniciar Sesión </a></li>
+            echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
+            echo "\"><i class=\"fas fa-edit\"></i>Iniciar Sesión </a></li>
     \t\t\t\t";
         }
         // line 36
@@ -104,7 +109,12 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t</div>
 \t\t</nav>
 
-        <div class=\"footer\">
+        ";
+        // line 54
+        $this->displayBlock('body', $context, $blocks);
+        // line 55
+        echo "
+\t\t<div class=\"footer\">
 \t\t\t<div style=\"text-align:center;\">
 \t\t\t\t<p>Todos derechos de este sitio estan reservados a </p>
 \t\t\t\t<a href=\"https://www.facebook.com/marcosblua\" target=\"_blank\">
@@ -123,12 +133,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t</div>
 
         ";
-        // line 72
-        $this->displayBlock('body', $context, $blocks);
-        // line 73
-        echo "        ";
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 74
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 75
         echo "    </body>
 </html>
 ";
@@ -187,7 +194,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 72
+    // line 54
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -205,7 +212,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 73
+    // line 74
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -235,7 +242,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     public function getDebugInfo()
     {
-        return array (  209 => 73,  191 => 72,  179 => 11,  173 => 7,  163 => 6,  144 => 5,  132 => 74,  129 => 73,  127 => 72,  89 => 36,  85 => 34,  81 => 32,  79 => 31,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  216 => 74,  198 => 54,  186 => 11,  180 => 7,  170 => 6,  151 => 5,  139 => 75,  137 => 74,  116 => 55,  114 => 54,  94 => 36,  88 => 34,  84 => 32,  82 => 31,  65 => 17,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -254,9 +261,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
         {% endblock %}
     </head>
 
-    <body>
+    <body style=\"display: flex; flex-direction: column;\">
         <div class=\"header\" style=\"text-align:center\">
-\t\t\t<img src=\"Logo.png\" width=\"170px\" heigth=\"170px\" />
+\t\t\t<img src=\"{{ asset(\"Logo.png\") }}\" width=\"170px\" heigth=\"170px\" />
 \t\t</div>
 
 \t\t<nav class=\"navbar navbar-expand-md navbar-light bg-light sticky-top\">
@@ -273,7 +280,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t\t{% if app.user %}
         \t\t\t\tMostrar foto de perfil clickeable
 \t\t\t\t\t{% else %}
-\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"Inicio Sesion.html\"><i class=\"fas fa-edit\"></i>Iniciar Sesión </a></li>
+\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('app_login') }}\"><i class=\"fas fa-edit\"></i>Iniciar Sesión </a></li>
     \t\t\t\t{% endif %}
 \t\t\t\t</ul>
 \t\t\t</div>
@@ -293,7 +300,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t</div>
 \t\t</nav>
 
-        <div class=\"footer\">
+        {% block body %}{% endblock %}
+
+\t\t<div class=\"footer\">
 \t\t\t<div style=\"text-align:center;\">
 \t\t\t\t<p>Todos derechos de este sitio estan reservados a </p>
 \t\t\t\t<a href=\"https://www.facebook.com/marcosblua\" target=\"_blank\">
@@ -311,7 +320,6 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t    \t</div>
 \t\t</div>
 
-        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

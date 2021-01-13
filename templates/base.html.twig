@@ -12,9 +12,9 @@
         {% endblock %}
     </head>
 
-    <body>
+    <body style="display: flex; flex-direction: column;">
         <div class="header" style="text-align:center">
-			<img src="Logo.png" width="170px" heigth="170px" />
+			<img src="{{ asset("Logo.png") }}" width="170px" heigth="170px" />
 		</div>
 
 		<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
@@ -31,7 +31,7 @@
 					{% if app.user %}
         				Mostrar foto de perfil clickeable
 					{% else %}
-						<li class="nav-item"><a  class="nav-link" href="Inicio Sesion.html"><i class="fas fa-edit"></i>Iniciar Sesión </a></li>
+						<li class="nav-item"><a  class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-edit"></i>Iniciar Sesión </a></li>
     				{% endif %}
 				</ul>
 			</div>
@@ -51,7 +51,9 @@
 			</div>
 		</nav>
 
-        <div class="footer">
+        {% block body %}{% endblock %}
+
+		<div class="footer">
 			<div style="text-align:center;">
 				<p>Todos derechos de este sitio estan reservados a </p>
 				<a href="https://www.facebook.com/marcosblua" target="_blank">
@@ -69,7 +71,6 @@
 	    	</div>
 		</div>
 
-        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
