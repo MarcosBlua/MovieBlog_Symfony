@@ -13,16 +13,16 @@
     </head>
 
     <body style="display: flex; flex-direction: column;">
-        <div class="header" style="text-align:center">
-			<img src="{{ asset("Logo.png") }}" width="170px" heigth="170px" />
-		</div>
-
 		<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
 			<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#myNavbar">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 	
 			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="nav-item"> <img src="{{ asset("Logo.png") }}" width="60px" heigth="60px" /> </li>
+				</ul>
+
 				<ul class="navbar-nav mr-auto mx-auto mt-2 mt-md-0">
 					<li class="nav-item"> Campo de busqueda </li>
 				</ul>
