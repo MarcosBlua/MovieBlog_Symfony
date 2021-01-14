@@ -81,7 +81,11 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
         // line 31
         if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) {
             // line 32
-            echo "        \t\t\t\tMostrar foto de perfil clickeable
+            echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("perfil", ["username" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "username", [], "any", false, false, false, 32)]), "html", null, true);
+            echo "\"> <img src=";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "imagenPerfil", [], "any", false, false, false, 32), "html", null, true);
+            echo " width=\"20px\" heigth=\"20px\" style=\"border-radius: 100%;\"/> </a></li>
 \t\t\t\t\t";
         } else {
             // line 34
@@ -228,7 +232,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     public function getDebugInfo()
     {
-        return array (  202 => 60,  184 => 40,  172 => 11,  166 => 7,  156 => 6,  137 => 5,  125 => 61,  123 => 60,  102 => 41,  100 => 40,  94 => 36,  88 => 34,  84 => 32,  82 => 31,  65 => 17,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  206 => 60,  188 => 40,  176 => 11,  170 => 7,  160 => 6,  141 => 5,  129 => 61,  127 => 60,  106 => 41,  104 => 40,  98 => 36,  92 => 34,  84 => 32,  82 => 31,  65 => 17,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -264,7 +268,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
 \t\t\t\t<ul class=\"nav navbar-nav navbar-right\">
 \t\t\t\t\t{% if app.user %}
-        \t\t\t\tMostrar foto de perfil clickeable
+\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('perfil', {'username': app.user.username}) }}\"> <img src={{app.user.imagenPerfil}} width=\"20px\" heigth=\"20px\" style=\"border-radius: 100%;\"/> </a></li>
 \t\t\t\t\t{% else %}
 \t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('app_login') }}\"><i class=\"fas fa-sign-in-alt\"></i> Iniciar Sesión </a></li>
     \t\t\t\t{% endif %}

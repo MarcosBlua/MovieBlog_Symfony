@@ -22,18 +22,18 @@ class UsuarioController extends AbstractController
     }
 
     /**
-     * @Route("/perfil/{username}", name="verPerfil")
+     * @Route("/perfil/{username}", name="perfil")
      */
     public function verPerfil(request $request, $username)
     {
         $manager=$this->getDoctrine()->getManager();
         
-        $user= $manager->getRepository(User::class)->find($username);
-        
-        $form = $this->createForm(UserType::class,$user);
+        $form = $this->createForm(UserType::class,new User());
         $form->handleRequest($request);
+
+        $user= $manager->getRepository(User::class)->findOneByUsername($username);
         
-        return $this->render('persona/verPerfil.html.twig',
+        return $this->render('usuario/verPerfil.html.twig',
                 ['usuario' => $user]
             );
     }

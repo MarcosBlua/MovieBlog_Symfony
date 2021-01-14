@@ -29,7 +29,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					{% if app.user %}
-        				Mostrar foto de perfil clickeable
+						<li class="nav-item"><a  class="nav-link" href="{{ path('perfil', {'username': app.user.username}) }}"> <img src={{app.user.imagenPerfil}} width="20px" heigth="20px" style="border-radius: 100%;"/> </a></li>
 					{% else %}
 						<li class="nav-item"><a  class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión </a></li>
     				{% endif %}

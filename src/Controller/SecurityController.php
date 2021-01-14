@@ -61,7 +61,7 @@ class SecurityController extends AbstractController
             $entManager->persist($user);
             $entManager->flush();
             
-            return $this->redirectToRoute('verPerfil'); #agregar username del perfil recien agregado
+            return $this->redirectToRoute('perfil', array('username' => ($user -> getUsername())));
             
         }
         return $this->render('security/registroUsuario.html.twig', [
