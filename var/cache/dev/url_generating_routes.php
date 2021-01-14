@@ -19,4 +19,6 @@ return [
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'registroUsuario' => [[], ['_controller' => 'App\\Controller\\SecurityController::registroUsuario'], [], [['text', '/registroUsuario']], [], []],
+    'usuario' => [[], ['_controller' => 'App\\Controller\\UsuarioController::index'], [], [['text', '/usuario']], [], []],
+    'perfil' => [['username'], ['_controller' => 'App\\Controller\\UsuarioController::verPerfil'], [], [['variable', '/', '[^/]++', 'username', true], ['text', '/perfil']], [], []],
 ];

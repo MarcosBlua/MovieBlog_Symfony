@@ -87,32 +87,18 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
             // line 34
             echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
-            echo "\"><i class=\"fas fa-edit\"></i> Iniciar Sesión </a></li>
+            echo "\"><i class=\"fas fa-sign-in-alt\"></i> Iniciar Sesión </a></li>
     \t\t\t\t";
         }
         // line 36
         echo "\t\t\t\t</ul>
 \t\t\t</div>
 \t\t</nav>
-\t
-\t\t<nav class=\"navbar navbar-expand-md navbar-light bg-light sticky-top\">
-\t\t\t<button type=\"button\" class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#myNavbar\">
-\t\t\t\t<span class=\"navbar-toggler-icon\"></span>
-\t\t\t</button>
-\t
-\t\t\t<div class=\"collapse navbar-collapse\" id=\"myNavbar\">
-\t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
-\t\t\t\t\t<li class=\"nav-item activa\"><a class=\"nav-link\" href=\"Perfil.html\">Perfil</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"Noticias.html\">Noticias</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"Recomendaciones.html\">Recomendaciones</a></li>
-\t\t\t\t</ul>
-\t\t\t</div>
-\t\t</nav>
 
         ";
-        // line 54
+        // line 40
         $this->displayBlock('body', $context, $blocks);
-        // line 55
+        // line 41
         echo "
 \t\t<div class=\"footer\">
 \t\t\t<div style=\"text-align:center;\">
@@ -133,9 +119,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t</div>
 
         ";
-        // line 74
+        // line 60
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 75
+        // line 61
         echo "    </body>
 </html>
 ";
@@ -194,7 +180,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 54
+    // line 40
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -212,7 +198,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 74
+    // line 60
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -242,7 +228,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     public function getDebugInfo()
     {
-        return array (  216 => 74,  198 => 54,  186 => 11,  180 => 7,  170 => 6,  151 => 5,  139 => 75,  137 => 74,  116 => 55,  114 => 54,  94 => 36,  88 => 34,  84 => 32,  82 => 31,  65 => 17,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  202 => 60,  184 => 40,  172 => 11,  166 => 7,  156 => 6,  137 => 5,  125 => 61,  123 => 60,  102 => 41,  100 => 40,  94 => 36,  88 => 34,  84 => 32,  82 => 31,  65 => 17,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -280,22 +266,8 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t\t{% if app.user %}
         \t\t\t\tMostrar foto de perfil clickeable
 \t\t\t\t\t{% else %}
-\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('app_login') }}\"><i class=\"fas fa-edit\"></i> Iniciar Sesión </a></li>
+\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"{{ path('app_login') }}\"><i class=\"fas fa-sign-in-alt\"></i> Iniciar Sesión </a></li>
     \t\t\t\t{% endif %}
-\t\t\t\t</ul>
-\t\t\t</div>
-\t\t</nav>
-\t
-\t\t<nav class=\"navbar navbar-expand-md navbar-light bg-light sticky-top\">
-\t\t\t<button type=\"button\" class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#myNavbar\">
-\t\t\t\t<span class=\"navbar-toggler-icon\"></span>
-\t\t\t</button>
-\t
-\t\t\t<div class=\"collapse navbar-collapse\" id=\"myNavbar\">
-\t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
-\t\t\t\t\t<li class=\"nav-item activa\"><a class=\"nav-link\" href=\"Perfil.html\">Perfil</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"Noticias.html\">Noticias</a></li>
-\t\t\t\t\t<li class=\"nav-item\"><a class=\"nav-link\" href=\"Recomendaciones.html\">Recomendaciones</a></li>
 \t\t\t\t</ul>
 \t\t\t</div>
 \t\t</nav>

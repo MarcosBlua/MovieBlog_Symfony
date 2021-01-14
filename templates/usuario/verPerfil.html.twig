@@ -4,6 +4,7 @@
 {{parent()}} 
 
 <div class="container" style="text-align:center">
+	{# Foto de perfil del usuario #}
     <img src="{{ asset("Logo.png") }}" width="170px" heigth="170px" style="border-radius: 100%;"/>
     <h1 style="text-align:center"> <b> usuario.username </b> </h1>
 </div>
@@ -15,10 +16,18 @@
 	
 	<div class="collapse navbar-collapse" id="myNavbar">
 		<ul class="navbar-nav mr-auto mx-auto mt-2 mt-md-0">
-			<li class="nav-item activa"><a class="nav-link" href="Perfil.html">Perfil</a></li>
+			<li class="nav-item activa"><a class="nav-link">Perfil</a></li>
 			<li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
 			<li class="nav-item"><a class="nav-link" href="Recomendaciones.html">Recomendaciones</a></li>
 		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+					{% if app.user %}
+        				<li class="nav-item"><a  class="nav-link" href="{{ path('modificarUsuario/username') }}"><i class="fas fa-edit"></i></a></li>
+					
+						<li class="nav-item"><a  class="nav-link" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a></li>
+    				{% endif %}
+				</ul>
 	</div>
 </nav>
 
