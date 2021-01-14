@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseReg.html.twig' %}
 
 {% block body %}
     {{ parent() }}
@@ -26,9 +26,19 @@
                 {{form_widget(formulario.password, { 'attr': {'class': 'form-control'} })}}            
         </div>
 
+        <div class="form-group">
+            <label> Imagen de Perfil: </label>
+
+            <img src={{formulario.imagenPerfil.vars.value}} width="80px" heigth="80px" style="border-radius: 100%;"/>
+
+            {{form_widget(formulario.imagenPerfil, { 'attr': {'class': 'form-control'} })}}
+        </div>
+
         {{form_end(formulario)}}
 
         <br>
+
+        <h6 style="text-align:center"> ¿Ya tiene cuenta? <a href="{{ path('app_login') }}"> Inicie Sesión </a></h6>
 
     </div>
 

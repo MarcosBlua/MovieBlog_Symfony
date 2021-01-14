@@ -3,7 +3,7 @@
 {% block body %}
 {{parent()}} 
 
-<div class="header" style="text-align:center; background-color: #CECECE; height: auto;">
+<div class="header" style="text-align:center; background-color: #85A3DD; height: auto;">
 	<br>
 	
     <img src={{usuario.imagenPerfil}} width="170px" heigth="170px" style="border-radius: 100%;"/>
@@ -27,9 +27,9 @@
 		<ul class="nav navbar-nav navbar-right">
 					{% if app.user %}
 						{% if app.user.id == usuario.id %}
-        					<li class="nav-item"><a  class="nav-link" href="{{path('modificarUsuario', {'id': app.user.id})}}"><i class="fas fa-edit"></i></a></li>
+        					<li class="nav-item"><a class="nav-link" href="{{path('modificarUsuario', {'id': app.user.id})}}"><i class="fas fa-edit"></i></a></li>
 					
-							<li class="nav-item"><a  class="nav-link" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a></li>
+							<li class="nav-item"><a class="nav-link" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i></a></li>
 						{% endif %}
 					{% endif %}
 				</ul>
