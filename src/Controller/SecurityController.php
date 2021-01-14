@@ -61,7 +61,9 @@ class SecurityController extends AbstractController
             $entManager->persist($user);
             $entManager->flush();
             
-            return $this->redirectToRoute('perfil', array('username' => ($user -> getUsername())));
+            $this-> addFlash('exito', 'El registro fue exitoso');
+
+            return $this->redirectToRoute('app_login');
             
         }
         return $this->render('security/registroUsuario.html.twig', [

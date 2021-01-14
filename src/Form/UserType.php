@@ -17,7 +17,7 @@ class UserType extends AbstractType
             //->add('roles')
             ->add('password')
             ->add('imagenPerfil')
-            ->add('Registrarme', SubmitType::class, array('attr' => array('class' => 'btn btn-lg btn-primary')))
+            ->add('Guardar', SubmitType::class, array('attr' => array('class' => 'btn btn-lg btn-primary')))
         ;
     }
 

@@ -37,4 +37,30 @@ class UsuarioController extends AbstractController
                 ['usuario' => $user]
             );
     }
+
+    /**
+     * @Route("/modificarUsuario/{id}", name="modificarUsuario")
+     */
+    
+    public function modificarUsuario(Request $request, $id)
+    {
+        $manager=$this->getDoctrine()->getManager();
+        
+        $usuario= $manager->getRepository(User::class)->find($id);
+        
+        $form = $this->createForm(UserType::class,$usuario);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()){
+            
+            $manager->flush();
+            
+            return $this->redirectToRoute('perfil', ['username' => $usuario->getUsername()]);
+            
+        }
+        
+        return $this->render('Usuario/modificarUsuario.html.twig',
+                ['formulario' => $form->createView()]
+            );
+    }
 }

@@ -133,6 +133,7 @@
     <parameter key="serializer.mapping.cache.file">C:\wamp64\www\MovieBlog_Symfony\var\cache\dev/serialization.php</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_4_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\wamp64\www\MovieBlog_Symfony/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>

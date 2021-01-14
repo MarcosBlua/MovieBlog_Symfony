@@ -18,6 +18,7 @@ return [
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/registroUsuario' => [[['_route' => 'registroUsuario', '_controller' => 'App\\Controller\\SecurityController::registroUsuario'], null, null, null, false, false, null]],
         '/usuario' => [[['_route' => 'usuario', '_controller' => 'App\\Controller\\UsuarioController::index'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'index', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -37,6 +38,7 @@ return [
                     .')'
                 .')'
                 .'|/perfil/([^/]++)(*:185)'
+                .'|/modificarUsuario/([^/]++)(*:219)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -47,8 +49,9 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        185 => [
-            [['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null],
+        185 => [[['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null]],
+        219 => [
+            [['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],
