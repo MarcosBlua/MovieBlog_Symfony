@@ -22,7 +22,7 @@ class UsuarioController extends AbstractController
     }
 
     /**
-     * @Route("/perfil/{username}", name="perfil")
+     * @Route("/perfil/{username}", name="verPerfil")
      */
     public function verPerfil(request $request, $username)
     {

@@ -47,6 +47,8 @@ class SecurityController extends AbstractController
     {
         $user = new User();
 
+        $user -> setImagenPerfil("https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg");
+
         $formulario = $this->createForm(UserType::class,$user);
 
         $formulario -> handleRequest($request);
@@ -59,7 +61,7 @@ class SecurityController extends AbstractController
             $entManager->persist($user);
             $entManager->flush();
             
-            return $this->redirectToRoute('listaPersonas');
+            return $this->redirectToRoute('verPerfil'); #agregar username del perfil recien agregado
             
         }
         return $this->render('security/registroUsuario.html.twig', [
