@@ -62,6 +62,11 @@ class RecomendacionPelicula
      */
     private $descarga;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="recomendaciones")
+     */
+    private $usuario;
+
     public function getId(): ?int
     {
         return $this->id;

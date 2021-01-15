@@ -16,6 +16,8 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'recomendacion' => [[], ['_controller' => 'App\\Controller\\RecomendacionController::index'], [], [['text', '/recomendacion']], [], []],
+    'listaRecomendaciones' => [['username'], ['_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], [], [['variable', '/', '[^/]++', 'username', true], ['text', '/listaRecomendaciones']], [], []],
+    'pelicula' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::pelicula'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/pelicula']], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'registroUsuario' => [[], ['_controller' => 'App\\Controller\\SecurityController::registroUsuario'], [], [['text', '/registroUsuario']], [], []],

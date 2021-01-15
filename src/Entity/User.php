@@ -39,6 +39,11 @@ class User implements UserInterface
      */
     private $imagenPerfil;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RecomendacionPelicula", mappedBy="usuario")
+     */
+    private $recomendaciones;
+
     public function getId(): ?int
     {
         return $this->id;

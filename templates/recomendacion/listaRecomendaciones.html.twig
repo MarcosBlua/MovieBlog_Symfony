@@ -19,9 +19,9 @@
 	
 	<div class="collapse navbar-collapse" id="myNavbar">
 		<ul class="navbar-nav mr-auto mx-auto mt-2 mt-md-0">
-			<li class="nav-item activa"><a class="nav-link">Perfil</a></li>
+			<li class="nav-item"><a class="nav-link" href="{{path('perfil', {'username': usuario.username})}}">Perfil</a></li>
 			<li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
-			<li class="nav-item"><a class="nav-link" href="{{path('listaRecomendaciones', {'username': usuario.username})}}">Recomendaciones</a></li>
+			<li class="nav-item activa"><a class="nav-link">Recomendaciones</a></li>
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
@@ -36,8 +36,21 @@
 	</div>
 </nav>
 
-<div class="container forma" style="width: 80%;">
-
+<div class="container">
+    {% for recomendacion in recomendaciones %}
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 d-flex justify-content-center">  
+				<div class="thumbnail">	
+					<a href="{{ path('pelicula', {'id': recomendacion.id})}}">
+						<img src={{recomendacion.imagenSRC}} width="100%" height="100%">
+						<div class="overlay">
+							<div class="text"><h1 style="font-size: 15px;">{{recomendacion.titulo}} ({{recomendacion.anio}})</h1>{{recomendacion.sinopsis}}</div>
+						</div>
+					</a>
+				</div>
+			</div>
+        </div>
+    {% endfor %}
 </div>
 
 {% endblock %}

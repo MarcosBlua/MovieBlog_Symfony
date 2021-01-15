@@ -37,8 +37,12 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/perfil/([^/]++)(*:185)'
-                .'|/modificarUsuario/([^/]++)(*:219)'
+                .'|/listaRecomendaciones/([^/]++)(*:199)'
+                .'|/pe(?'
+                    .'|licula/([^/]++)(*:228)'
+                    .'|rfil/([^/]++)(*:249)'
+                .')'
+                .'|/modificarUsuario/([^/]++)(*:284)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -49,8 +53,10 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        185 => [[['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null]],
-        219 => [
+        199 => [[['_route' => 'listaRecomendaciones', '_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], ['username'], null, null, false, true, null]],
+        228 => [[['_route' => 'pelicula', '_controller' => 'App\\Controller\\RecomendacionController::pelicula'], ['id'], null, null, false, true, null]],
+        249 => [[['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null]],
+        284 => [
             [['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

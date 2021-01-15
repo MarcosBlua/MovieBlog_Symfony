@@ -59,9 +59,6 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
         echo "    </head>
 
     <body style=\"display: flex; flex-direction: column;\">
-        ";
-        // line 19
-        echo "
 \t\t<nav class=\"navbar navbar-expand-md navbar-light bg-light sticky-top\">
 \t\t\t<button type=\"button\" class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#myNavbar\">
 \t\t\t\t<span class=\"navbar-toggler-icon\"></span>
@@ -70,7 +67,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t<div class=\"collapse navbar-collapse\" id=\"myNavbar\">
 \t\t\t\t<ul class=\"nav navbar-nav navbar-left\">
 \t\t\t\t\t<li class=\"nav-item\"> <img src=\"";
-        // line 27
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Logo.png"), "html", null, true);
         echo "\" width=\"60px\" heigth=\"60px\" /> </li>
 \t\t\t\t</ul>
@@ -81,31 +78,31 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
 \t\t\t\t<ul class=\"nav navbar-nav navbar-right\">
 \t\t\t\t\t";
-        // line 35
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 35, $this->source); })()), "user", [], "any", false, false, false, 35)) {
-            // line 36
+        // line 31
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) {
+            // line 32
             echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("perfil", ["username" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 36, $this->source); })()), "user", [], "any", false, false, false, 36), "username", [], "any", false, false, false, 36)]), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("perfil", ["username" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "username", [], "any", false, false, false, 32)]), "html", null, true);
             echo "\"> <img src=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 36, $this->source); })()), "user", [], "any", false, false, false, 36), "imagenPerfil", [], "any", false, false, false, 36), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "imagenPerfil", [], "any", false, false, false, 32), "html", null, true);
             echo " width=\"20px\" heigth=\"20px\" style=\"border-radius: 100%;\"/> </a></li>
 \t\t\t\t\t";
         } else {
-            // line 38
+            // line 34
             echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\"><i class=\"fas fa-sign-in-alt\"></i> Iniciar Sesión </a></li>
     \t\t\t\t";
         }
-        // line 40
+        // line 36
         echo "\t\t\t\t</ul>
 \t\t\t</div>
 \t\t</nav>
 
         ";
-        // line 44
+        // line 40
         $this->displayBlock('body', $context, $blocks);
-        // line 45
+        // line 41
         echo "
 \t\t<div class=\"footer\">
 \t\t\t<div style=\"text-align:center;\">
@@ -126,9 +123,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t</div>
 
         ";
-        // line 64
+        // line 60
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 65
+        // line 61
         echo "    </body>
 </html>
 ";
@@ -187,7 +184,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 44
+    // line 40
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -205,7 +202,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 64
+    // line 60
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -235,7 +232,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     public function getDebugInfo()
     {
-        return array (  209 => 64,  191 => 44,  179 => 11,  173 => 7,  163 => 6,  144 => 5,  132 => 65,  130 => 64,  109 => 45,  107 => 44,  101 => 40,  95 => 38,  87 => 36,  85 => 35,  74 => 27,  64 => 19,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  206 => 60,  188 => 40,  176 => 11,  170 => 7,  160 => 6,  141 => 5,  129 => 61,  127 => 60,  106 => 41,  104 => 40,  98 => 36,  92 => 34,  84 => 32,  82 => 31,  71 => 23,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -255,10 +252,6 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
     </head>
 
     <body style=\"display: flex; flex-direction: column;\">
-        {#<div class=\"header\" style=\"text-align:center\">
-\t\t\t<img src=\"{{ asset(\"Logo.png\") }}\" width=\"170px\" heigth=\"170px\" />
-\t\t</div>#}
-
 \t\t<nav class=\"navbar navbar-expand-md navbar-light bg-light sticky-top\">
 \t\t\t<button type=\"button\" class=\"navbar-toggler\" data-toggle=\"collapse\" data-target=\"#myNavbar\">
 \t\t\t\t<span class=\"navbar-toggler-icon\"></span>
