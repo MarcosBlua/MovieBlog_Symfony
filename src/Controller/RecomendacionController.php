@@ -48,9 +48,9 @@ class RecomendacionController extends AbstractController
     }
 
     /**
-     * @Route("/pelicula/{id}", name="pelicula")
+     * @Route("/recomendacion/{id}", name="recomendacion")
      */
-    public function pelicula(request $request, $id)
+    public function recomendacion(request $request, $id)
     {
         $manager=$this->getDoctrine()->getManager();
         
@@ -59,8 +59,35 @@ class RecomendacionController extends AbstractController
 
         $pelicula= $manager->getRepository(RecomendacionPelicula::class)->find($id);
         
-        return $this->render('recomendacion/pelicula.html.twig',
+        return $this->render('recomendacion/recomendacion.html.twig',
                 ['pelicula' => $pelicula]
             );
+    }
+
+    /**
+     * @Route("/agregarRecomendacion", name="agregarRecomendacion")
+     */
+    public function agregarRecomendacion(Request $request): Response
+    {
+        $recomendacion = new RecomendacionPelicula();
+
+        $formulario = $this->createForm(RecomendacionType::class,$recomendacion);
+
+        $formulario -> handleRequest($request);
+
+        if ($formulario->isSubmitted() && $formulario->isValid()){
+            
+            $entManager = $this->getDoctrine()->getManager();
+            $recomendacion->setUsuario($this->getUser());
+            $entManager->persist($recomendacion);
+            $entManager->flush();
+            return $this->render('recomendacion/success.html.twig',
+		    ['recomendacion' => $recomendacion]
+           );
+        }
+
+        return $this->render('recomendacion/agregarRecomendacion.html.twig', [
+            'formulario' => $formulario->createView()
+        ]);
     }
 }

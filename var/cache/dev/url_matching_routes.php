@@ -13,7 +13,7 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/recomendacion' => [[['_route' => 'recomendacion', '_controller' => 'App\\Controller\\RecomendacionController::index'], null, null, null, false, false, null]],
+        '/agregarRecomendacion' => [[['_route' => 'agregarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::agregarRecomendacion'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'app_login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/logout' => [[['_route' => 'app_logout', '_controller' => 'App\\Controller\\SecurityController::logout'], null, null, null, false, false, null]],
         '/registroUsuario' => [[['_route' => 'registroUsuario', '_controller' => 'App\\Controller\\SecurityController::registroUsuario'], null, null, null, false, false, null]],
@@ -38,11 +38,9 @@ return [
                     .')'
                 .')'
                 .'|/listaRecomendaciones/([^/]++)(*:199)'
-                .'|/pe(?'
-                    .'|licula/([^/]++)(*:228)'
-                    .'|rfil/([^/]++)(*:249)'
-                .')'
-                .'|/modificarUsuario/([^/]++)(*:284)'
+                .'|/recomendacion/([^/]++)(*:230)'
+                .'|/perfil/([^/]++)(*:254)'
+                .'|/modificarUsuario/([^/]++)(*:288)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -54,9 +52,9 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         199 => [[['_route' => 'listaRecomendaciones', '_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], ['username'], null, null, false, true, null]],
-        228 => [[['_route' => 'pelicula', '_controller' => 'App\\Controller\\RecomendacionController::pelicula'], ['id'], null, null, false, true, null]],
-        249 => [[['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null]],
-        284 => [
+        230 => [[['_route' => 'recomendacion', '_controller' => 'App\\Controller\\RecomendacionController::recomendacion'], ['id'], null, null, false, true, null]],
+        254 => [[['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null]],
+        288 => [
             [['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

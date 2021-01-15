@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{{parent()}} 
+
+<br>
+
+<div class="container-fluid forma">
+    <h1>Se guardó correctamente la recomendación {{ recomendacion.titulo }}! </h1>
+
+    <img src={{recomendacion.imagenSRC}} class="img-thumbnail" width="405" height="600">
+
+    <br>
+
+    <a href="{{ path('recomendacion', {'id': recomendacion.id})}}" class="boton"> Verla </a>
+
+    <br>
+    
+</div>
+
+<br>
+
+{% endblock %}

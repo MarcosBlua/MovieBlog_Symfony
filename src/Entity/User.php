@@ -44,6 +44,11 @@ class User implements UserInterface
      */
     private $recomendaciones;
 
+    public function agregarRecomendacion(RecomendacionPelicula $recomendacion) {
+        $recomendacion->setUsuario($this);
+        $this->$recomendaciones[] = $recomendacion;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
