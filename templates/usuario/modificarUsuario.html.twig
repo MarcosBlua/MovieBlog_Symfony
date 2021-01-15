@@ -12,7 +12,8 @@
 	<br>
 </div>#}
 
-<br>
+{% if app.user.username == formulario.username.vars.value %}
+    <br>
 
 <div class="container forma" style="width: 80%;">
     <br>
@@ -49,5 +50,17 @@
 </div>
 
 <br>
+
+{% else %}
+    <br>
+
+    <div class="container forma">
+
+        <h1 style="color: #CA1212;"> No puede modificar los datos de otro usuario </h1>
+
+    </div>
+
+    <br>
+{% endif %}
 
 {% endblock %}
