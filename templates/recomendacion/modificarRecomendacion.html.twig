@@ -10,7 +10,7 @@
 
     {{form_start(formulario)}}
         <div class="poster">
-		    <img name="poster" id="poster" src="https://ia.media-imdb.com/images/M/MV5BMTk1MDg0NTU0OV5BMl5BanBnXkFtZTcwMTM1NDk0MQ@@._V1_.jpg" class="img-thumbnail" width="405" height="600">
+		    <img name="poster" id="poster" src={{formulario.imagenSRC.vars.value}} class="img-thumbnail" width="405" height="600">
 
             {{form_widget(formulario.imagenSRC)}}
 
