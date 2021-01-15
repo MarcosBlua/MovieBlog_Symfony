@@ -43,7 +43,8 @@ return [
                     .'|Recomendacion/([^/]++)(*:273)'
                     .'|Usuario/([^/]++)(*:297)'
                 .')'
-                .'|/perfil/([^/]++)(*:322)'
+                .'|/eliminarRecomendacion/([^/]++)(*:337)'
+                .'|/perfil/([^/]++)(*:361)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -58,7 +59,8 @@ return [
         230 => [[['_route' => 'recomendacion', '_controller' => 'App\\Controller\\RecomendacionController::recomendacion'], ['id'], null, null, false, true, null]],
         273 => [[['_route' => 'modificarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::modificarRecomendacion'], ['id'], null, null, false, true, null]],
         297 => [[['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null]],
-        322 => [
+        337 => [[['_route' => 'eliminarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::eliminarRecomendacion'], ['id'], null, null, false, true, null]],
+        361 => [
             [['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

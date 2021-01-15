@@ -71,6 +71,11 @@ class RecomendacionPelicula
         $this->usuario = $usuario;
     }
 
+    public function getUsuario(): ?int
+    {
+        return $this->usuario->getId();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

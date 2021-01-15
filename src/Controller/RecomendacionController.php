@@ -36,11 +36,11 @@ class RecomendacionController extends AbstractController
 
         $user= $manager->getRepository(User::class)->findOneByUsername($username);
 
-        $manager2=$this->getDoctrine()->getManager();
-        $form2 = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
-        $form2->handleRequest($request);
+        $manager=$this->getDoctrine()->getManager();
+        $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
+        $form->handleRequest($request);
         
-        $recomendaciones= $manager2->getRepository(RecomendacionPelicula::class)->findBy(array('usuario' => $user->getId() ));
+        $recomendaciones= $manager->getRepository(RecomendacionPelicula::class)->findBy(array('usuario' => $user->getId() ));
         
         return $this->render('recomendacion/listaRecomendaciones.html.twig',
                 ['recomendaciones' => $recomendaciones, 'usuario' => $user]
@@ -58,9 +58,14 @@ class RecomendacionController extends AbstractController
         $form->handleRequest($request);
 
         $pelicula= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+
+        $form = $this->createForm(UserType::class,new User());
+        $form->handleRequest($request);
+
+        $user= $manager->getRepository(User::class)->find($pelicula->getUsuario());
         
         return $this->render('recomendacion/recomendacion.html.twig',
-                ['pelicula' => $pelicula]
+                ['pelicula' => $pelicula, 'usuario' => $user]
             );
     }
 
@@ -94,7 +99,6 @@ class RecomendacionController extends AbstractController
     /**
      * @Route("/modificarRecomendacion/{id}", name="modificarRecomendacion")
      */
-    
     public function modificarRecomendacion(Request $request, $id)
     {
         $manager=$this->getDoctrine()->getManager();
@@ -108,12 +112,32 @@ class RecomendacionController extends AbstractController
             
             $manager->flush();
             
-            return $this->listarPersonas($request);
+            return $this->listaRecomendaciones($request, $this->getUser()->getUsername());
             
         }
         
         return $this->render('recomendacion/modificarRecomendacion.html.twig',
-                ['formulario' => $form->createView()]
+                ['formulario' => $form->createView(), 'usuario_id' => $recomendacion->getUsuario()]
             );
+    }
+
+    /**
+     * @Route("/eliminarRecomendacion/{id}", name="eliminarRecomendacion")
+     */
+    
+    public function eliminarRecomendacion(Request $request, $id)
+    {
+        $manager=$this->getDoctrine()->getManager();
+        
+        $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
+        $form->handleRequest($request);
+        
+        $recomendacion= $manager->getRepository(Recomendacion::class)->find($id);
+       
+        $manager->remove($recomendacion);
+        $manager->flush();
+        
+        return $this->listaRecomendaciones($request, $this->getUser()->getUsername());
+        
     }
 }
