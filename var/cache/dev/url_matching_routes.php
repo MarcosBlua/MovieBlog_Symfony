@@ -39,8 +39,11 @@ return [
                 .')'
                 .'|/listaRecomendaciones/([^/]++)(*:199)'
                 .'|/recomendacion/([^/]++)(*:230)'
-                .'|/perfil/([^/]++)(*:254)'
-                .'|/modificarUsuario/([^/]++)(*:288)'
+                .'|/modificar(?'
+                    .'|Recomendacion/([^/]++)(*:273)'
+                    .'|Usuario/([^/]++)(*:297)'
+                .')'
+                .'|/perfil/([^/]++)(*:322)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -53,9 +56,10 @@ return [
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         199 => [[['_route' => 'listaRecomendaciones', '_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], ['username'], null, null, false, true, null]],
         230 => [[['_route' => 'recomendacion', '_controller' => 'App\\Controller\\RecomendacionController::recomendacion'], ['id'], null, null, false, true, null]],
-        254 => [[['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null]],
-        288 => [
-            [['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null],
+        273 => [[['_route' => 'modificarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::modificarRecomendacion'], ['id'], null, null, false, true, null]],
+        297 => [[['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null]],
+        322 => [
+            [['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

@@ -18,6 +18,7 @@ return [
     'listaRecomendaciones' => [['username'], ['_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], [], [['variable', '/', '[^/]++', 'username', true], ['text', '/listaRecomendaciones']], [], []],
     'recomendacion' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::recomendacion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/recomendacion']], [], []],
     'agregarRecomendacion' => [[], ['_controller' => 'App\\Controller\\RecomendacionController::agregarRecomendacion'], [], [['text', '/agregarRecomendacion']], [], []],
+    'modificarRecomendacion' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::modificarRecomendacion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/modificarRecomendacion']], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'registroUsuario' => [[], ['_controller' => 'App\\Controller\\SecurityController::registroUsuario'], [], [['text', '/registroUsuario']], [], []],

@@ -1,22 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-{{parent()}} 
+{{parent()}}
 
-<br>
+{% if app.user.id == formulario.usuario.vars.value %}
+    <br>
 
-<div class="container forma">
+    <div class="container forma">
+
+        <br>
+
+        <h1 style="text-align:center"> Modificar recomendación </h1>
+
+        <br>
+
+        {{form(formulario)}}
+
+    </div>
 
     <br>
 
-    <h1 style="text-align:center"> Modificar recomendación </h1>
-
+{% else %}
     <br>
 
-    {{form(formulario)}}
+    <div class="container forma">
 
-</div>
+        <h1 style="color: #CA1212;"> No puede modificar las recomendaciones de otro usuario </h1>
 
-<br>
+    </div>
+
+    <br>
+{% endif %}
+
 
 {% endblock %}

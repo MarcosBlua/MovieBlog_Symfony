@@ -90,4 +90,30 @@ class RecomendacionController extends AbstractController
             'formulario' => $formulario->createView()
         ]);
     }
+
+    /**
+     * @Route("/modificarRecomendacion/{id}", name="modificarRecomendacion")
+     */
+    
+    public function modificarRecomendacion(Request $request, $id)
+    {
+        $manager=$this->getDoctrine()->getManager();
+        
+        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+        
+        $form = $this->createForm(RecomendacionType::class,$recomendacion);
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()){
+            
+            $manager->flush();
+            
+            return $this->listarPersonas($request);
+            
+        }
+        
+        return $this->render('recomendacion/modificarRecomendacion.html.twig',
+                ['formulario' => $form->createView()]
+            );
+    }
 }
