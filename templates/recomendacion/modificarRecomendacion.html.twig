@@ -5,16 +5,55 @@
 
 <br>
 
-<div class="container forma">
-
+<div class="container" style="background-color:#FFFFFF; border-radius: 2%;">
     <br>
 
-    <h1 style="text-align:center"> Modificar recomendación </h1>
+    {{form_start(formulario)}}
+        <div class="poster">
+		    <img src={{formulario.imagenSRC.vars.value}} class="img-thumbnail" width="405" height="600">
 
-    <br>
+            {{form_widget(formulario.imagenSRC)}}
+	    </div>
+        <div class="container" style="width: 50%; float: right;"> 
+		    <h1 style="text-align:center"> <b>Titulo: {{form_widget(formulario.titulo)}} </b> </h1>
+		    <p style="text-align: center"> 
+		        Sinopsis: {{form_widget(formulario.sinopsis)}}
+		        <br>
+		        <br>
+		        <br>
+		    </p>
+		    <p>
+		        <h3> <b> Detalles </b> </h3>
+		        <br>
+		        <b> Año: </b> {{form_widget(formulario.anio)}}
+		        <br>
+		        <b> Género: </b> {{form_widget(formulario.generos)}}
+		        <br>
+		        <b> Director: </b> {{form_widget(formulario.director)}}
+	            <br>
+		        <b> Elenco: </b> {{form_widget(formulario.elenco)}}
+	        </p>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <br>
+	        <p style="font-size:30px; text-align:center"> <b> Trailer </b> </p>
+            {{form_widget(formulario.trailer)}}
+	        <br>
+	        <br>
+	        <div class="container" style="text-align:center">
+		        <img src="https://3.bp.blogspot.com/-rpEYb6UMCIM/V3NIhzVXJ7I/AAAAAAAAAfM/IC2trfqGKvUgt-m8nQkE4rRtIRyhryzMgCPcB/s1600/Mega.png" width="100%" height="100%">
 
-    {{form(formulario)}}
+                {{form_widget(formulario.descarga)}}
 
+                <br>
+            </div>
+
+            {{form_widget(formulario.Aceptar)}}
+        </div>
+
+    {{form_end(formulario)}}
 </div>
 
 <br>
