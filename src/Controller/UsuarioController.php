@@ -50,17 +50,24 @@ class UsuarioController extends AbstractController
         
         $form = $this->createForm(UserType::class,$usuario);
         $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()){
+
+        if($usuario->getId() == $this->getUser()->getId()){
+            if ($form->isSubmitted() && $form->isValid()){
             
-            $manager->flush();
+                $manager->flush();
+                
+                return $this->redirectToRoute('perfil', ['username' => $usuario->getUsername()]);
+                
+            }
             
-            return $this->redirectToRoute('perfil', ['username' => $usuario->getUsername()]);
-            
-        }
-        
-        return $this->render('Usuario/modificarUsuario.html.twig',
-                ['formulario' => $form->createView()]
+            return $this->render('Usuario/modificarUsuario.html.twig',
+                    ['formulario' => $form->createView()]
+                );
+        }else{
+            return $this->render('error.html.twig',
+            ['mensajeError' => 'No puede modificar los datos de otro usuario.']
             );
+        }
+
     }
 }

@@ -108,17 +108,25 @@ class RecomendacionController extends AbstractController
         $form = $this->createForm(RecomendacionType::class,$recomendacion);
         $form->handleRequest($request);
         
-        if ($form->isSubmitted() && $form->isValid()){
+        if ($recomendacion->getUsuario() == $this->getUser()->getId()){
+            if ($form->isSubmitted() && $form->isValid()){
             
-            $manager->flush();
+                $manager->flush();
+                
+                return $this->redirectToRoute('listaRecomendaciones', ['username' => $this->getUser()->getUsername()]);
+                
+            }
             
-            return $this->listaRecomendaciones($request, $this->getUser()->getUsername());
-            
-        }
-        
-        return $this->render('recomendacion/modificarRecomendacion.html.twig',
-                ['formulario' => $form->createView(), 'usuario_id' => $recomendacion->getUsuario()]
+            return $this->render('recomendacion/modificarRecomendacion.html.twig',
+                    ['formulario' => $form->createView()]
+                );
+        }else{
+            return $this->render('error.html.twig',
+            ['mensajeError' => 'No puede modificar recomendaciones de otro usuario.']
             );
+        }
+
+        
     }
 
     /**
@@ -132,12 +140,18 @@ class RecomendacionController extends AbstractController
         $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
         $form->handleRequest($request);
         
-        $recomendacion= $manager->getRepository(Recomendacion::class)->find($id);
+        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
        
-        $manager->remove($recomendacion);
-        $manager->flush();
+        if ($recomendacion->getUsuario() == $this->getUser()->getId()){
+            $manager->remove($recomendacion);
+            $manager->flush();
         
-        return $this->listaRecomendaciones($request, $this->getUser()->getUsername());
+            return $this->redirectToRoute('listaRecomendaciones', ['username' => $this->getUser()->getUsername()]);
+        }else{
+            return $this->render('error.html.twig',
+            ['mensajeError' => 'No puede eliminar recomendaciones de otro usuario.']
+            );
+        }       
         
     }
 }
