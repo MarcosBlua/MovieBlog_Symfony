@@ -10,9 +10,11 @@
 
     {{form_start(formulario)}}
         <div class="poster">
-		    <img src={{formulario.imagenSRC.vars.value}} class="img-thumbnail" width="405" height="600">
+		    <img name="poster" id="poster" src="https://ia.media-imdb.com/images/M/MV5BMTk1MDg0NTU0OV5BMl5BanBnXkFtZTcwMTM1NDk0MQ@@._V1_.jpg" class="img-thumbnail" width="405" height="600">
 
             {{form_widget(formulario.imagenSRC)}}
+
+            <a href='#' onclick='newPoster()' class="boton"> Preview </a>
 	    </div>
         <div class="container" style="width: 50%; float: right;"> 
 		    <h1 style="text-align:center"> <b>Titulo: {{form_widget(formulario.titulo)}} </b> </h1>
@@ -51,11 +53,19 @@
             </div>
 
             {{form_widget(formulario.Aceptar)}}
+
+            <br>
         </div>
 
     {{form_end(formulario)}}
 </div>
 
 <br>
+
+<script>
+    function newPoster(){
+        document.getElementById("poster").src = document.getElementById("recomendacion_imagenSRC").value;
+    }
+</script>
 
 {% endblock %}
