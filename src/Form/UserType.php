@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
@@ -15,7 +16,7 @@ class UserType extends AbstractType
         $builder
             ->add('username')
             //->add('roles')
-            ->add('password')
+            ->add('password', PasswordType::class)
             ->add('imagenPerfil')
             ->add('Guardar', SubmitType::class, array('attr' => array('class' => 'btn btn-lg btn-primary')))
         ;
