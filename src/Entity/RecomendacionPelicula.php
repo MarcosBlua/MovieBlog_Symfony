@@ -67,6 +67,20 @@ class RecomendacionPelicula
      */
     private $usuario;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="recomendaciones", cascade={"persist"})
+     * @ORM\JoinTable(
+     *     name="favoritos_usuario",
+     *     joinColumns={
+     *          @ORM\JoinColumn(name="recomendacion_id", referencedColumnName="id")
+     *     },
+     *     inverseJoinColumns={
+     *          @ORM\JoinColumn(name="usuario_id", referencedColumnName="id")
+     *     }
+     * )
+     */
+    private $favoritos;
+
     public function setUsuario(User $usuario) {
         $this->usuario = $usuario;
     }

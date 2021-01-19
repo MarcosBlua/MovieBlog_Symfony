@@ -44,6 +44,11 @@ class User implements UserInterface
      */
     private $recomendaciones;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\RecomendacionPelicula", mappedBy="usuario")
+     */
+    private $favoritos;
+
     public function agregarRecomendacion(RecomendacionPelicula $recomendacion) {
         $recomendacion->setUsuario($this);
         $this->$recomendaciones[] = $recomendacion;
