@@ -18,6 +18,10 @@
 			{% else %}
 				Recomendada por: 
 				<a  class="nav-link" href="{{ path('perfil', {'username': usuario.username}) }}"> <img src={{usuario.imagenPerfil}} width="50px" heigth="50px" style="border-radius: 100%;"/> {{usuario.username}} </a>
+
+				<a href="#" style="float:right;"><i class="fas fa-star"></i></a>
+
+				<a href="#" style="float:right;"><i class="far fa-star"></i></a>
 			{% endif %}
 
 			<h1 style="text-align:center"> <b> {{pelicula.titulo}} ({{pelicula.anio}}) </b> </h1>

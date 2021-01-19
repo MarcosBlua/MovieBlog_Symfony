@@ -151,7 +151,7 @@ class RecomendacionController extends AbstractController
             return $this->render('error.html.twig',
             ['mensajeError' => 'No puede eliminar recomendaciones de otro usuario.']
             );
-        }       
+        }
         
     }
 }
