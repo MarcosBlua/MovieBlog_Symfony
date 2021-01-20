@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecomendacionPeliculaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -68,7 +70,7 @@ class RecomendacionPelicula
     private $usuario;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="recomendaciones", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="App\Entity\User", inversedBy="favoritos", cascade={"persist"})
      * @ORM\JoinTable(
      *     name="favoritos_usuario",
      *     joinColumns={
@@ -79,7 +81,12 @@ class RecomendacionPelicula
      *     }
      * )
      */
-    private $favoritos;
+    private $favorito_de_usuarios;
+
+    public function __construct()
+   {
+       $this->favorito_de_usuarios = new ArrayCollection();
+   }
 
     public function setUsuario(User $usuario) {
         $this->usuario = $usuario;
@@ -201,5 +208,22 @@ class RecomendacionPelicula
         $this->descarga = $descarga;
 
         return $this;
+    }
+
+    public function marcarFavoritoDeUsuario(User $usuario): self
+    {
+        $this->favorito_de_usuarios[] = $usuario;
+ 
+        return $this;
+    }
+ 
+    public function desmarcarFavoritoDeUsuario(User $usuario): bool
+    {
+        return $this->favorito_de_usuarios->removeElement($usuario);
+    }
+ 
+    public function getFavoritoDeUsuario(): Collection
+    {
+        return $this->favorito_de_usuarios;
     }
 }

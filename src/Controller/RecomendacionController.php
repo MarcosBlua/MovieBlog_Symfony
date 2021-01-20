@@ -65,7 +65,7 @@ class RecomendacionController extends AbstractController
         $user= $manager->getRepository(User::class)->find($pelicula->getUsuario());
         
         return $this->render('recomendacion/recomendacion.html.twig',
-                ['pelicula' => $pelicula, 'usuario' => $user]
+                ['pelicula' => $pelicula, 'usuario' => $user, 'favorito' => $pelicula->getFavoritoDeUsuario()->contains($this->getUser())]
             );
     }
 
@@ -153,5 +153,59 @@ class RecomendacionController extends AbstractController
             );
         }
         
+    }
+
+    /**
+     * @Route("/marcarFavorito/{id}", name="marcarFavorito")
+     */
+    public function marcarFavorito(Request $request, $id)
+    {
+        $manager=$this->getDoctrine()->getManager();
+        
+        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+
+        $user = $this->getUser();
+        
+        if ($recomendacion->getUsuario() != $user->getId()){ 
+            $user->marcarFavorito($recomendacion);
+            $recomendacion->marcarFavoritoDeUsuario($user);
+
+            $manager->persist($recomendacion);
+            $manager->flush();
+                
+            return $this->redirectToRoute('recomendacion', ['id' => $recomendacion->getId()]); 
+        }else{
+            return $this->render('error.html.twig',
+            ['mensajeError' => 'No puede marcar sus propias recomendaciones como favoritos.']
+            );
+        }
+
+    }
+
+    /**
+     * @Route("/desmarcarFavorito/{id}", name="desmarcarFavorito")
+     */
+    public function desmarcarFavorito(Request $request, $id)
+    {
+        $manager=$this->getDoctrine()->getManager();
+        
+        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+
+        $user = $this->getUser();
+        
+        if ($recomendacion->getUsuario() != $user->getId()){ 
+            $user->desmarcarFavorito($recomendacion);
+            $recomendacion->desmarcarFavoritoDeUsuario($user);
+
+            $manager->persist($recomendacion);
+            $manager->flush();
+                
+            return $this->redirectToRoute('recomendacion', ['id' => $recomendacion->getId()]); 
+        }else{
+            return $this->render('error.html.twig',
+            ['mensajeError' => 'No puede marcar sus propias recomendaciones como favoritos.']
+            );
+        }
+
     }
 }

@@ -20,6 +20,8 @@ return [
     'agregarRecomendacion' => [[], ['_controller' => 'App\\Controller\\RecomendacionController::agregarRecomendacion'], [], [['text', '/agregarRecomendacion']], [], []],
     'modificarRecomendacion' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::modificarRecomendacion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/modificarRecomendacion']], [], []],
     'eliminarRecomendacion' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::eliminarRecomendacion'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/eliminarRecomendacion']], [], []],
+    'marcarFavorito' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::marcarFavorito'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/marcarFavorito']], [], []],
+    'desmarcarFavorito' => [['id'], ['_controller' => 'App\\Controller\\RecomendacionController::desmarcarFavorito'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/desmarcarFavorito']], [], []],
     'app_login' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/login']], [], []],
     'app_logout' => [[], ['_controller' => 'App\\Controller\\SecurityController::logout'], [], [['text', '/logout']], [], []],
     'registroUsuario' => [[], ['_controller' => 'App\\Controller\\SecurityController::registroUsuario'], [], [['text', '/registroUsuario']], [], []],

@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -45,9 +47,14 @@ class User implements UserInterface
     private $recomendaciones;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\RecomendacionPelicula", mappedBy="usuario")
+     * @ORM\ManyToMany(targetEntity="App\Entity\RecomendacionPelicula", mappedBy="favorito_de_usuarios")
      */
     private $favoritos;
+
+    public function __construct()
+   {
+       $this->favoritos = new ArrayCollection();
+   }
 
     public function agregarRecomendacion(RecomendacionPelicula $recomendacion) {
         $recomendacion->setUsuario($this);
@@ -138,4 +145,21 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function marcarFavorito(RecomendacionPelicula $favorito): self
+   {
+       $this->favoritos[] = $favorito;
+ 
+       return $this;
+   }
+ 
+   public function DesmarcarFavorito(RecomendacionPelicula $favorito): bool
+   {
+       return $this->favoritos->removeElement($favorito);
+   }
+ 
+   public function getFavoritos(): Collection
+   {
+       return $this->favoritos;
+   }
 }
