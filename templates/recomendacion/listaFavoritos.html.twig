@@ -20,16 +20,8 @@
 	<div class="collapse navbar-collapse" id="myNavbar">
 		<ul class="navbar-nav mr-auto mx-auto mt-2 mt-md-0">
 			<li class="nav-item"><a class="nav-link" href="{{path('perfil', {'username': usuario.username})}}">Perfil</a></li>
-			<li class="nav-item activa"><a class="nav-link">Recomendaciones</a></li>
-			<li class="nav-item"><a class="nav-link" href="{{path('listaFavoritos', {'username': usuario.username})}}">Favoritos</a></li>
-		</ul>
-
-		<ul class="nav navbar-nav navbar-right">
-			{% if app.user %}
-				{% if app.user.id == usuario.id %}
-        			<li class="nav-item"><a class="nav-link" href="{{path('agregarRecomendacion')}}"><i class="far fa-plus-square"></i></a></li>
-				{% endif %}
-			{% endif %}
+			<li class="nav-item"><a class="nav-link" href="{{path('listaRecomendaciones', {'username': usuario.username})}}">Recomendaciones</a></li>
+            <li class="nav-item activa"><a class="nav-link">Favoritos</a></li>
 		</ul>
 	</div>
 </nav>

@@ -208,4 +208,19 @@ class RecomendacionController extends AbstractController
         }
 
     }
+
+    /**
+     * @Route("/listaFavoritos/{username}", name="listaFavoritos")
+     */
+    
+    public function listaFavoritos(Request $request, $username)
+    {
+        $manager=$this->getDoctrine()->getManager();
+
+        $user= $manager->getRepository(User::class)->findOneByUsername($username);
+        
+        return $this->render('recomendacion/listaFavoritos.html.twig',
+                ['recomendaciones' => $user->getFavoritos(), 'usuario' => $user]
+            );
+    }
 }

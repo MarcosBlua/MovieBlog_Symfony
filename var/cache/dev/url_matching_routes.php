@@ -37,18 +37,21 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/listaRecomendaciones/([^/]++)(*:199)'
-                .'|/recomendacion/([^/]++)(*:230)'
+                .'|/lista(?'
+                    .'|Recomendaciones/([^/]++)(*:202)'
+                    .'|Favoritos/([^/]++)(*:228)'
+                .')'
+                .'|/recomendacion/([^/]++)(*:260)'
                 .'|/m(?'
                     .'|odificar(?'
-                        .'|Recomendacion/([^/]++)(*:276)'
-                        .'|Usuario/([^/]++)(*:300)'
+                        .'|Recomendacion/([^/]++)(*:306)'
+                        .'|Usuario/([^/]++)(*:330)'
                     .')'
-                    .'|arcarFavorito/([^/]++)(*:331)'
+                    .'|arcarFavorito/([^/]++)(*:361)'
                 .')'
-                .'|/eliminarRecomendacion/([^/]++)(*:371)'
-                .'|/desmarcarFavorito/([^/]++)(*:406)'
-                .'|/perfil/([^/]++)(*:430)'
+                .'|/eliminarRecomendacion/([^/]++)(*:401)'
+                .'|/desmarcarFavorito/([^/]++)(*:436)'
+                .'|/perfil/([^/]++)(*:460)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -59,14 +62,15 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        199 => [[['_route' => 'listaRecomendaciones', '_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], ['username'], null, null, false, true, null]],
-        230 => [[['_route' => 'recomendacion', '_controller' => 'App\\Controller\\RecomendacionController::recomendacion'], ['id'], null, null, false, true, null]],
-        276 => [[['_route' => 'modificarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::modificarRecomendacion'], ['id'], null, null, false, true, null]],
-        300 => [[['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null]],
-        331 => [[['_route' => 'marcarFavorito', '_controller' => 'App\\Controller\\RecomendacionController::marcarFavorito'], ['id'], null, null, false, true, null]],
-        371 => [[['_route' => 'eliminarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::eliminarRecomendacion'], ['id'], null, null, false, true, null]],
-        406 => [[['_route' => 'desmarcarFavorito', '_controller' => 'App\\Controller\\RecomendacionController::desmarcarFavorito'], ['id'], null, null, false, true, null]],
-        430 => [
+        202 => [[['_route' => 'listaRecomendaciones', '_controller' => 'App\\Controller\\RecomendacionController::listaRecomendaciones'], ['username'], null, null, false, true, null]],
+        228 => [[['_route' => 'listaFavoritos', '_controller' => 'App\\Controller\\RecomendacionController::listaFavoritos'], ['username'], null, null, false, true, null]],
+        260 => [[['_route' => 'recomendacion', '_controller' => 'App\\Controller\\RecomendacionController::recomendacion'], ['id'], null, null, false, true, null]],
+        306 => [[['_route' => 'modificarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::modificarRecomendacion'], ['id'], null, null, false, true, null]],
+        330 => [[['_route' => 'modificarUsuario', '_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], ['id'], null, null, false, true, null]],
+        361 => [[['_route' => 'marcarFavorito', '_controller' => 'App\\Controller\\RecomendacionController::marcarFavorito'], ['id'], null, null, false, true, null]],
+        401 => [[['_route' => 'eliminarRecomendacion', '_controller' => 'App\\Controller\\RecomendacionController::eliminarRecomendacion'], ['id'], null, null, false, true, null]],
+        436 => [[['_route' => 'desmarcarFavorito', '_controller' => 'App\\Controller\\RecomendacionController::desmarcarFavorito'], ['id'], null, null, false, true, null]],
+        460 => [
             [['_route' => 'perfil', '_controller' => 'App\\Controller\\UsuarioController::verPerfil'], ['username'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
