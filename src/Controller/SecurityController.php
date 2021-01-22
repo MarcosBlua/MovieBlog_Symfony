@@ -50,24 +50,31 @@ class SecurityController extends AbstractController
         $user -> setImagenPerfil("https://t4.ftcdn.net/jpg/03/46/93/61/360_F_346936114_RaxE6OQogebgAWTalE1myseY1Hbb5qPM.jpg");
 
         $formulario = $this->createForm(UserType::class,$user);
-
-        $formulario -> handleRequest($request);
         
-        if ($formulario->isSubmitted() && $formulario->isValid()){
+        try{
+            $formulario -> handleRequest($request);
+        
+            if ($formulario->isSubmitted() && $formulario->isValid()){
             
-            $user->setRoles($user->getRoles());
-            $user->setPassword($passwordEncoder->encodePassword($user,$formulario['password']->getData()));
-            $entManager = $this->getDoctrine()->getManager();
-            $entManager->persist($user);
-            $entManager->flush();
+                $user->setRoles($user->getRoles());
+                $user->setPassword($passwordEncoder->encodePassword($user,$formulario['password']->getData()));
+                $entManager = $this->getDoctrine()->getManager();
+                $entManager->persist($user);
+                $entManager->flush();
             
-            $this-> addFlash('exito', 'El registro fue exitoso');
+                $this-> addFlash('exito', 'El registro fue exitoso');
 
-            return $this->redirectToRoute('app_login');
+                return $this->redirectToRoute('app_login');
             
+            }
+            return $this->render('security/registroUsuario.html.twig', [
+                'formulario' => $formulario->createView()
+            ]);
+        }catch(\Exception $e){
+            return $this->render('error.html.twig',
+            ['mensajeError' => $e->getMessage()]
+            );
         }
-        return $this->render('security/registroUsuario.html.twig', [
-            'formulario' => $formulario->createView()
-        ]);
+        
     }
 }
