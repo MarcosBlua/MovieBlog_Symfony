@@ -73,7 +73,10 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
-\t\t\t\t\t<li class=\"nav-item\"> Campo de busqueda </li>
+\t\t\t\t\t<li class=\"nav-item\"> ";
+        // line 27
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("App\\Controller\\UsuarioController::searchBarAction"));
+        echo " </li>
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"nav navbar-nav navbar-right\">
@@ -232,7 +235,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     public function getDebugInfo()
     {
-        return array (  206 => 60,  188 => 40,  176 => 11,  170 => 7,  160 => 6,  141 => 5,  129 => 61,  127 => 60,  106 => 41,  104 => 40,  98 => 36,  92 => 34,  84 => 32,  82 => 31,  71 => 23,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  209 => 60,  191 => 40,  179 => 11,  173 => 7,  163 => 6,  144 => 5,  132 => 61,  130 => 60,  109 => 41,  107 => 40,  101 => 36,  95 => 34,  87 => 32,  85 => 31,  78 => 27,  71 => 23,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -263,7 +266,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
-\t\t\t\t\t<li class=\"nav-item\"> Campo de busqueda </li>
+\t\t\t\t\t<li class=\"nav-item\"> {{ render(controller('App\\\\Controller\\\\UsuarioController::searchBarAction')) }} </li>
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"nav navbar-nav navbar-right\">

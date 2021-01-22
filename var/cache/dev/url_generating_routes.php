@@ -29,5 +29,6 @@ return [
     'usuario' => [[], ['_controller' => 'App\\Controller\\UsuarioController::index'], [], [['text', '/usuario']], [], []],
     'perfil' => [['username'], ['_controller' => 'App\\Controller\\UsuarioController::verPerfil'], [], [['variable', '/', '[^/]++', 'username', true], ['text', '/perfil']], [], []],
     'modificarUsuario' => [['id'], ['_controller' => 'App\\Controller\\UsuarioController::modificarUsuario'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/modificarUsuario']], [], []],
+    'searchBar' => [[], ['_controller' => 'App\\Controller\\UsuarioController::searchBarAction'], [], [['text', '/searchBar']], [], []],
     'index' => [[], ['_controller' => 'App\\Controller\\SecurityController::login'], [], [['text', '/']], [], []],
 ];
