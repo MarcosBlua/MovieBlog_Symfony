@@ -11,17 +11,19 @@
 		</div>
 		<div class="jumbotron" style="background-color:#FFFFFF"> 
 
-			{% if app.user.id == pelicula.usuario %}
+			{% if app.user and (app.user.id == pelicula.usuario) %}
 				<a href="{{path('modificarRecomendacion', {'id': pelicula.id})}}"><i class="fas fa-edit"></i></a>
 
 				<a href="{{path('eliminarRecomendacion', {'id': pelicula.id})}}"><i class="fas fa-trash-alt"></i></a>
 			{% else %}
 				Recomendada por: 
 				<a  class="nav-link" href="{{ path('perfil', {'username': usuario.username}) }}"> <img src={{usuario.imagenPerfil}} width="50px" heigth="50px" style="border-radius: 100%;"/> {{usuario.username}} </a>
-				{% if favorito %}
-					<a href="{{path('desmarcarFavorito', {'id': pelicula.id})}}" style="float:right;"><i class="fas fa-star"></i></a>
-				{% else %}
-					<a href="{{path('marcarFavorito', {'id': pelicula.id})}}" style="float:right;"><i class="far fa-star"></i></a>
+				{% if app.user %}
+					{% if favorito %}
+						<a href="{{path('desmarcarFavorito', {'id': pelicula.id})}}" style="float:right;"><i class="fas fa-star"></i></a>
+					{% else %}
+						<a href="{{path('marcarFavorito', {'id': pelicula.id})}}" style="float:right;"><i class="far fa-star"></i></a>
+					{% endif %}
 				{% endif %}
 			{% endif %}
 
