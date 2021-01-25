@@ -9,7 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SearchBarController extends AbstractController
 {
@@ -30,7 +29,6 @@ class SearchBarController extends AbstractController
         $form = $this->createFormBuilder(null)
             ->setAction($this->generateUrl('handleSearch'))
             ->add('search', TextType::class)
-            ->add('buscar', SubmitType::class)
         ->getForm();    
 
         return $this->render('search_bar/searchBar.html.twig', [
