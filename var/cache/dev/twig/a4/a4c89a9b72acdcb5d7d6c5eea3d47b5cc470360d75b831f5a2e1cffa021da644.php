@@ -75,7 +75,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
 \t\t\t\t\t<li class=\"nav-item\"> ";
         // line 27
-        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("App\\Controller\\UsuarioController::searchBarAction"));
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("App\\Controller\\SearchBarController::searchBarAction"));
         echo " </li>
 \t\t\t\t</ul>
 
@@ -266,7 +266,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
-\t\t\t\t\t<li class=\"nav-item\"> {{ render(controller('App\\\\Controller\\\\UsuarioController::searchBarAction')) }} </li>
+\t\t\t\t\t<li class=\"nav-item\"> {{ render(controller('App\\\\Controller\\\\SearchBarController::searchBarAction')) }} </li>
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"nav navbar-nav navbar-right\">

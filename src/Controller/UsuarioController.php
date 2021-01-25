@@ -8,7 +8,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class UsuarioController extends AbstractController
 {
@@ -70,18 +69,5 @@ class UsuarioController extends AbstractController
             );
         }
 
-    }
-
-    /**
-     * @Route("/searchBar", name="searchBar")
-     */
-    public function searchBarAction(){
-        $form = $this->createFormBuilder(null)
-            ->add('search', TextType::class)
-        ->getForm();    
-
-        return $this->render('Usuario/searchBar.html.twig', [
-            'form' => $form->createView()
-        ]);
     }
 }
