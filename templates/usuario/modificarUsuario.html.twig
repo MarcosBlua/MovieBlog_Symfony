@@ -2,42 +2,74 @@
 
 {% block body %}
 {{parent()}} 
+
+{{form_start(formulario)}}
+
+<div class="header" style="text-align:center; background-color: #85A3DD; height: auto;">
+	<br>
+	
+	<div class="imagenPerfil">
+		<img src={{formulario.imagenPerfil.vars.value}} width="100%" heigth="100%" id="perfil"/>
+
+        <div class="overlay">
+            <a href="#" id="verURLPerfil"><i class="fas fa-edit"></i></a>
+        </div>
+	</div>
+
+    {{form_widget(formulario.imagenPerfil, { 'attr': {'class': 'form-control'} })}}
+    <a href='#'  id="cargarURL" onclick='newPoster()' class="boton"> Cargar </a>
+
+    <br>
+
+    <h1 style="text-align:center; width:30%; display: inline-block;"> {{form_widget(formulario.username, { 'attr': {'class': 'form-control'} })}} </h1>
+
+	<br>
+</div>
+
 <br>
 
 <div class="container forma" style="width: 80%;">
     <br>
 
-        <h1 style="text-align:center"> Modifique sus datos </h1>
+    <div class="form-group">
+        <label> Contraseña: </label>
 
-        <br>
+        {{form_widget(formulario.password, { 'attr': {'class': 'form-control'} })}}            
+    </div>
 
-        {{form_start(formulario)}}
+    {#<div class="form-group">
+        <label> Imagen de perfil actual: </label>
 
-        <div class="form-group">
-            <label> Usuario: </label>
+        <img src={{formulario.imagenPerfil.vars.value}} width="80px" heigth="80px" style="border-radius: 100%;"/>
 
-            {{form_widget(formulario.username, { 'attr': {'class': 'form-control'} })}}
-        </div>
+        {{form_widget(formulario.imagenPerfil, { 'attr': {'class': 'form-control'} })}}
 
-        <div class="form-group">
-            <label> Contraseña: </label>
+    </div>#}
 
-            {{form_widget(formulario.password, { 'attr': {'class': 'form-control'} })}}            
-        </div>
+    {{form_end(formulario)}}
 
-        <div class="form-group">
-            <label> Imagen de perfil actual: </label>
-
-            <img src={{formulario.imagenPerfil.vars.value}} width="80px" heigth="80px" style="border-radius: 100%;"/>
-
-            {{form_widget(formulario.imagenPerfil, { 'attr': {'class': 'form-control'} })}}
-        </div>
-
-        {{form_end(formulario)}}
-
-        <br>
+    <br>
 </div>
 
 <br>
+
+<script>
+$().ready = function() {
+    $('#user_imagenPerfil').hide();
+    $('#cargarURL').hide();
+    
+    $("#verURLPerfil").click(function() {
+        $('#user_imagenPerfil').toggle();
+        $('#cargarURL').toggle();
+    });
+}();
+
+function newPoster(){
+    document.getElementById("perfil").src = document.getElementById("user_imagenPerfil").value;
+
+    $('#user_imagenPerfil').toggle();
+    $('#cargarURL').toggle();
+}
+</script>
 
 {% endblock %}

@@ -150,7 +150,7 @@ html, body {
 	float:left;
 }
 
-.boton {
+.boton{
 	font: bold 11px Arial;
 	text-decoration: none;
 	background-color: #EEEEEE;
@@ -160,4 +160,18 @@ html, body {
 	border-right: 1px solid #333333;
 	border-bottom: 1px solid #333333;
 	border-left: 1px solid #CCCCCC;
-  }
+}
+
+.imagenPerfil{
+	display: inline-block;
+	position: relative;
+	width: 170px;
+	height: 170px;
+	border-radius: 100%;
+	overflow: hidden;
+}
+.imagenPerfil:hover .overlay{
+	padding-top: 50%;
+	opacity: 0.75;
+	background-color: #6cb6d6;
+}

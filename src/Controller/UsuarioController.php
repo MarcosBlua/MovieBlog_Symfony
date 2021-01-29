@@ -8,9 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
 use App\Form\UserType;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UsuarioController extends AbstractController
 {
+    private $passwordEncoder;
+
     /**
      * @Route("/usuario", name="usuario")
      */
@@ -49,7 +52,7 @@ class UsuarioController extends AbstractController
      * @Route("/modificarUsuario/{id}", name="modificarUsuario")
      */
     
-    public function modificarUsuario(Request $request, $id)
+    public function modificarUsuario(Request $request, $id, UserPasswordEncoderInterface $passwordEncoder)
     {
         $manager=$this->getDoctrine()->getManager();
         
@@ -62,7 +65,10 @@ class UsuarioController extends AbstractController
 
             if($usuario->getId() == $this->getUser()->getId()){
                 if ($form->isSubmitted() && $form->isValid()){
-            
+                    
+                    $usuario->setPassword($passwordEncoder->encodePassword($usuario,$form['password']->getData()));
+                    $manager = $this->getDoctrine()->getManager();
+                    $manager->persist($usuario);
                     $manager->flush();
                 
                     return $this->redirectToRoute('perfil', ['username' => $usuario->getUsername()]);
