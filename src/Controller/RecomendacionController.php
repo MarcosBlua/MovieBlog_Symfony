@@ -32,19 +32,26 @@ class RecomendacionController extends AbstractController
         $manager=$this->getDoctrine()->getManager();
         
         $form = $this->createForm(UserType::class,new User());
-        $form->handleRequest($request);
 
-        $user= $manager->getRepository(User::class)->findOneByUsername($username);
+        try{
+            $form->handleRequest($request);
 
-        $manager=$this->getDoctrine()->getManager();
-        $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
-        $form->handleRequest($request);
+            $user= $manager->getRepository(User::class)->findOneByUsername($username);
+
+            $manager=$this->getDoctrine()->getManager();
+            $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
+            $form->handleRequest($request);
         
-        $recomendaciones= $manager->getRepository(RecomendacionPelicula::class)->findBy(array('usuario' => $user->getId() ));
+            $recomendaciones= $manager->getRepository(RecomendacionPelicula::class)->findBy(array('usuario' => $user->getId() ));
         
-        return $this->render('recomendacion/listaRecomendaciones.html.twig',
+            return $this->render('recomendacion/listaRecomendaciones.html.twig',
                 ['recomendaciones' => $recomendaciones, 'usuario' => $user]
             );
+        }catch(\Exception $e){
+            return $this->render('error.html.twig',
+            ['mensajeError' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -55,18 +62,25 @@ class RecomendacionController extends AbstractController
         $manager=$this->getDoctrine()->getManager();
         
         $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
-        $form->handleRequest($request);
 
-        $pelicula= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+        try{
+            $form->handleRequest($request);
 
-        $form = $this->createForm(UserType::class,new User());
-        $form->handleRequest($request);
+            $pelicula= $manager->getRepository(RecomendacionPelicula::class)->find($id);
 
-        $user= $manager->getRepository(User::class)->find($pelicula->getUsuario());
+            $form = $this->createForm(UserType::class,new User());
+            $form->handleRequest($request);
+
+            $user= $manager->getRepository(User::class)->find($pelicula->getUsuario());
         
-        return $this->render('recomendacion/recomendacion.html.twig',
+            return $this->render('recomendacion/recomendacion.html.twig',
                 ['pelicula' => $pelicula, 'usuario' => $user, 'favorito' => $pelicula->getFavoritoDeUsuario()->contains($this->getUser())]
             );
+        }catch(\Exception $e){
+            return $this->render('error.html.twig',
+            ['mensajeError' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -78,22 +92,28 @@ class RecomendacionController extends AbstractController
 
         $formulario = $this->createForm(RecomendacionType::class,$recomendacion);
 
-        $formulario -> handleRequest($request);
+        try{
+            $formulario -> handleRequest($request);
 
-        if ($formulario->isSubmitted() && $formulario->isValid()){
+            if ($formulario->isSubmitted() && $formulario->isValid()){
             
-            $entManager = $this->getDoctrine()->getManager();
-            $recomendacion->setUsuario($this->getUser());
-            $entManager->persist($recomendacion);
-            $entManager->flush();
-            return $this->render('recomendacion/success.html.twig',
-		    ['recomendacion' => $recomendacion]
-           );
-        }
+                $entManager = $this->getDoctrine()->getManager();
+                $recomendacion->setUsuario($this->getUser());
+                $entManager->persist($recomendacion);
+                $entManager->flush();
+                return $this->render('recomendacion/success.html.twig',
+		            ['recomendacion' => $recomendacion]
+                );
+            }
 
-        return $this->render('recomendacion/agregarRecomendacion.html.twig', [
-            'formulario' => $formulario->createView()
-        ]);
+            return $this->render('recomendacion/agregarRecomendacion.html.twig', [
+                'formulario' => $formulario->createView()
+            ]);
+        }catch(\Exception $e){
+            return $this->render('error.html.twig',
+            ['mensajeError' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -103,30 +123,34 @@ class RecomendacionController extends AbstractController
     {
         $manager=$this->getDoctrine()->getManager();
         
-        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+        try{
+            $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
         
-        $form = $this->createForm(RecomendacionType::class,$recomendacion);
-        $form->handleRequest($request);
+            $form = $this->createForm(RecomendacionType::class,$recomendacion);
+            $form->handleRequest($request);
         
-        if ($recomendacion->getUsuario() == $this->getUser()->getId()){
-            if ($form->isSubmitted() && $form->isValid()){
+            if ($recomendacion->getUsuario() == $this->getUser()->getId()){
+                if ($form->isSubmitted() && $form->isValid()){
             
-                $manager->flush();
+                    $manager->flush();
                 
-                return $this->redirectToRoute('listaRecomendaciones', ['username' => $this->getUser()->getUsername()]);
+                    return $this->redirectToRoute('listaRecomendaciones', ['username' => $this->getUser()->getUsername()]);
                 
-            }
+                }
             
-            return $this->render('recomendacion/modificarRecomendacion.html.twig',
+                return $this->render('recomendacion/modificarRecomendacion.html.twig',
                     ['formulario' => $form->createView()]
                 );
-        }else{
+            }else{
+                return $this->render('error.html.twig',
+                    ['mensajeError' => 'No puede modificar recomendaciones de otro usuario.']
+                );
+            }
+        }catch(\Exception $e){
             return $this->render('error.html.twig',
-            ['mensajeError' => 'No puede modificar recomendaciones de otro usuario.']
+            ['mensajeError' => $e->getMessage()]
             );
-        }
-
-        
+        }       
     }
 
     /**
@@ -138,20 +162,28 @@ class RecomendacionController extends AbstractController
         $manager=$this->getDoctrine()->getManager();
         
         $form = $this->createForm(RecomendacionType::class,new RecomendacionPelicula());
-        $form->handleRequest($request);
+
+        try{
+            $form->handleRequest($request);
         
-        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
+            $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
        
-        if ($recomendacion->getUsuario() == $this->getUser()->getId()){
-            $manager->remove($recomendacion);
-            $manager->flush();
+            if ($recomendacion->getUsuario() == $this->getUser()->getId()){
+                $manager->remove($recomendacion);
+                $manager->flush();
         
-            return $this->redirectToRoute('listaRecomendaciones', ['username' => $this->getUser()->getUsername()]);
-        }else{
+                return $this->redirectToRoute('listaRecomendaciones', ['username' => $this->getUser()->getUsername()]);
+            }else{
+                return $this->render('error.html.twig',
+                    ['mensajeError' => 'No puede eliminar recomendaciones de otro usuario.']
+                );
+            }
+        }catch(\Exception $e){
             return $this->render('error.html.twig',
-            ['mensajeError' => 'No puede eliminar recomendaciones de otro usuario.']
+            ['mensajeError' => $e->getMessage()]
             );
-        }
+        }   
+        
         
     }
 
@@ -161,25 +193,30 @@ class RecomendacionController extends AbstractController
     public function marcarFavorito(Request $request, $id)
     {
         $manager=$this->getDoctrine()->getManager();
-        
-        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
 
-        $user = $this->getUser();
-        
-        if ($recomendacion->getUsuario() != $user->getId()){ 
-            $user->marcarFavorito($recomendacion);
-            $recomendacion->marcarFavoritoDeUsuario($user);
+        try{
+            $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
 
-            $manager->persist($recomendacion);
-            $manager->flush();
+            $user = $this->getUser();
+        
+            if ($recomendacion->getUsuario() != $user->getId()){ 
+                $user->marcarFavorito($recomendacion);
+                $recomendacion->marcarFavoritoDeUsuario($user);
+
+                $manager->persist($recomendacion);
+                $manager->flush();
                 
-            return $this->redirectToRoute('recomendacion', ['id' => $recomendacion->getId()]); 
-        }else{
+                return $this->redirectToRoute('recomendacion', ['id' => $recomendacion->getId()]); 
+            }else{
+                return $this->render('error.html.twig',
+                    ['mensajeError' => 'No puede marcar sus propias recomendaciones como favoritos.']
+                );
+            }
+        }catch(\Exception $e){
             return $this->render('error.html.twig',
-            ['mensajeError' => 'No puede marcar sus propias recomendaciones como favoritos.']
+            ['mensajeError' => $e->getMessage()]
             );
         }
-
     }
 
     /**
@@ -188,25 +225,30 @@ class RecomendacionController extends AbstractController
     public function desmarcarFavorito(Request $request, $id)
     {
         $manager=$this->getDoctrine()->getManager();
-        
-        $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
 
-        $user = $this->getUser();
-        
-        if ($recomendacion->getUsuario() != $user->getId()){ 
-            $user->desmarcarFavorito($recomendacion);
-            $recomendacion->desmarcarFavoritoDeUsuario($user);
+        try{
+            $recomendacion= $manager->getRepository(RecomendacionPelicula::class)->find($id);
 
-            $manager->persist($recomendacion);
-            $manager->flush();
+            $user = $this->getUser();
+        
+            if ($recomendacion->getUsuario() != $user->getId()){ 
+                $user->desmarcarFavorito($recomendacion);
+                $recomendacion->desmarcarFavoritoDeUsuario($user);
+
+                $manager->persist($recomendacion);
+                $manager->flush();
                 
-            return $this->redirectToRoute('recomendacion', ['id' => $recomendacion->getId()]); 
-        }else{
+                return $this->redirectToRoute('recomendacion', ['id' => $recomendacion->getId()]); 
+            }else{
+                return $this->render('error.html.twig',
+                    ['mensajeError' => 'No puede marcar sus propias recomendaciones como favoritos.']
+                );
+            }
+        }catch(\Exception $e){
             return $this->render('error.html.twig',
-            ['mensajeError' => 'No puede marcar sus propias recomendaciones como favoritos.']
+            ['mensajeError' => $e->getMessage()]
             );
         }
-
     }
 
     /**
@@ -217,10 +259,16 @@ class RecomendacionController extends AbstractController
     {
         $manager=$this->getDoctrine()->getManager();
 
-        $user= $manager->getRepository(User::class)->findOneByUsername($username);
+        try{
+            $user= $manager->getRepository(User::class)->findOneByUsername($username);
         
-        return $this->render('recomendacion/listaFavoritos.html.twig',
+            return $this->render('recomendacion/listaFavoritos.html.twig',
                 ['recomendaciones' => $user->getFavoritos(), 'usuario' => $user]
             );
+        }catch(\Exception $e){
+            return $this->render('error.html.twig',
+            ['mensajeError' => $e->getMessage()]
+            );
+        }
     }
 }

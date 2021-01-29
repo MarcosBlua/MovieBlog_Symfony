@@ -29,13 +29,20 @@ class UsuarioController extends AbstractController
         $manager=$this->getDoctrine()->getManager();
         
         $form = $this->createForm(UserType::class,new User());
-        $form->handleRequest($request);
 
-        $user= $manager->getRepository(User::class)->findOneByUsername($username);
+        try{
+            $form->handleRequest($request);
+
+            $user= $manager->getRepository(User::class)->findOneByUsername($username);
         
-        return $this->render('usuario/verPerfil.html.twig',
+            return $this->render('usuario/verPerfil.html.twig',
                 ['usuario' => $user]
             );
+        }catch(\Exception $e){
+            return $this->render('error.html.twig',
+            ['mensajeError' => $e->getMessage()]
+            );
+        }
     }
 
     /**
@@ -49,25 +56,31 @@ class UsuarioController extends AbstractController
         $usuario= $manager->getRepository(User::class)->find($id);
         
         $form = $this->createForm(UserType::class,$usuario);
-        $form->handleRequest($request);
 
-        if($usuario->getId() == $this->getUser()->getId()){
-            if ($form->isSubmitted() && $form->isValid()){
+        try{
+            $form->handleRequest($request);
+
+            if($usuario->getId() == $this->getUser()->getId()){
+                if ($form->isSubmitted() && $form->isValid()){
             
-                $manager->flush();
+                    $manager->flush();
                 
-                return $this->redirectToRoute('perfil', ['username' => $usuario->getUsername()]);
+                    return $this->redirectToRoute('perfil', ['username' => $usuario->getUsername()]);
                 
-            }
+                }
             
-            return $this->render('Usuario/modificarUsuario.html.twig',
+                return $this->render('Usuario/modificarUsuario.html.twig',
                     ['formulario' => $form->createView()]
                 );
-        }else{
+            }else{
+                return $this->render('error.html.twig',
+                ['mensajeError' => 'No puede modificar los datos de otro usuario.']
+                );
+            }
+        }catch(\Exception $e){
             return $this->render('error.html.twig',
-            ['mensajeError' => 'No puede modificar los datos de otro usuario.']
+            ['mensajeError' => $e->getMessage()]
             );
         }
-
     }
 }

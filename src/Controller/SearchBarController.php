@@ -45,18 +45,25 @@ class SearchBarController extends AbstractController
         $manager=$this->getDoctrine()->getManager();
         
         $form = $this->createForm(UserType::class,new User());
-        $form->handleRequest($request);
 
-        if($query){
-            $user= $manager->getRepository(User::class)->findOneByUsername($query);
-        }
+        try{
+            $form->handleRequest($request);
 
-        if($user==null){
+            if($query){
+                $user= $manager->getRepository(User::class)->findOneByUsername($query);
+            }
+
+            if($user==null){
+                return $this->render('error.html.twig',
+                    ['mensajeError' => 'No existe el usuario que ingreso.']
+                );
+            }else{
+                return $this->redirectToRoute('perfil', ['username' => $user->getUsername()]);
+            }
+        }catch(\Exception $e){
             return $this->render('error.html.twig',
-            ['mensajeError' => 'No existe el usuario que ingreso.']
+            ['mensajeError' => $e->getMessage()]
             );
-        }else{
-            return $this->redirectToRoute('perfil', ['username' => $user->getUsername()]);
         }
     }
 }
