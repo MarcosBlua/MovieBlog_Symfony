@@ -48,14 +48,15 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 <html>
     <head>
         <meta charset=\"UTF-8\">
+\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>";
-        // line 5
+        // line 6
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
         ";
-        // line 6
+        // line 7
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 13
+        // line 14
         echo "    </head>
 
     <body style=\"display: flex; flex-direction: column;\">
@@ -67,45 +68,45 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t\t<div class=\"collapse navbar-collapse\" id=\"myNavbar\">
 \t\t\t\t<ul class=\"nav navbar-nav navbar-left\">
 \t\t\t\t\t<li class=\"nav-item\"> <img src=\"";
-        // line 23
+        // line 24
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Logo.png"), "html", null, true);
         echo "\" width=\"60px\" heigth=\"60px\" /> </li>
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"navbar-nav mr-auto mx-auto mt-2 mt-md-0\">
 \t\t\t\t\t<li class=\"nav-item\"> ";
-        // line 27
+        // line 28
         echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("App\\Controller\\SearchBarController::searchBarAction"));
         echo " </li>
 \t\t\t\t</ul>
 
 \t\t\t\t<ul class=\"nav navbar-nav navbar-right\">
 \t\t\t\t\t";
-        // line 31
-        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 31, $this->source); })()), "user", [], "any", false, false, false, 31)) {
-            // line 32
+        // line 32
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32)) {
+            // line 33
             echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("perfil", ["username" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "username", [], "any", false, false, false, 32)]), "html", null, true);
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("perfil", ["username" => twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33), "username", [], "any", false, false, false, 33)]), "html", null, true);
             echo "\"> <img src=";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()), "user", [], "any", false, false, false, 32), "imagenPerfil", [], "any", false, false, false, 32), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 33, $this->source); })()), "user", [], "any", false, false, false, 33), "imagenPerfil", [], "any", false, false, false, 33), "html", null, true);
             echo " width=\"20px\" heigth=\"20px\" style=\"border-radius: 100%;\"/> </a></li>
 \t\t\t\t\t";
         } else {
-            // line 34
+            // line 35
             echo "\t\t\t\t\t\t<li class=\"nav-item\"><a  class=\"nav-link\" href=\"";
             echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_login");
             echo "\"><i class=\"fas fa-sign-in-alt\"></i> Iniciar Sesión </a></li>
     \t\t\t\t";
         }
-        // line 36
+        // line 37
         echo "\t\t\t\t</ul>
 \t\t\t</div>
 \t\t</nav>
 
         ";
-        // line 40
-        $this->displayBlock('body', $context, $blocks);
         // line 41
+        $this->displayBlock('body', $context, $blocks);
+        // line 42
         echo "
 \t\t<div class=\"footer\">
 \t\t\t<div style=\"text-align:center;\">
@@ -126,9 +127,9 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 \t\t</div>
 
         ";
-        // line 60
-        $this->displayBlock('javascripts', $context, $blocks);
         // line 61
+        $this->displayBlock('javascripts', $context, $blocks);
+        // line 62
         echo "    </body>
 </html>
 ";
@@ -140,7 +141,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 5
+    // line 6
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -159,7 +160,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 6
+    // line 7
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -169,13 +170,13 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 7
+        // line 8
         echo "            <script src=\"https://kit.fontawesome.com/a076d05399.js\"></script>
 \t\t\t<script src=\"https://code.jquery.com/jquery-3.4.1.slim.min.js\" integrity=\"sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n\" crossorigin=\"anonymous\"></script>
 \t\t\t<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css\" integrity=\"sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh\" crossorigin=\"anonymous\">
 \t\t\t<script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js\" integrity=\"sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6\" crossorigin=\"anonymous\"></script>
 \t\t\t<link href=\"";
-        // line 11
+        // line 12
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/Estilo.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" type=\"text/css\">
         ";
@@ -187,7 +188,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 40
+    // line 41
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -205,7 +206,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     }
 
-    // line 60
+    // line 61
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -235,7 +236,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 
     public function getDebugInfo()
     {
-        return array (  209 => 60,  191 => 40,  179 => 11,  173 => 7,  163 => 6,  144 => 5,  132 => 61,  130 => 60,  109 => 41,  107 => 40,  101 => 36,  95 => 34,  87 => 32,  85 => 31,  78 => 27,  71 => 23,  59 => 13,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  210 => 61,  192 => 41,  180 => 12,  174 => 8,  164 => 7,  145 => 6,  133 => 62,  131 => 61,  110 => 42,  108 => 41,  102 => 37,  96 => 35,  88 => 33,  86 => 32,  79 => 28,  72 => 24,  60 => 14,  58 => 7,  54 => 6,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -244,6 +245,7 @@ class __TwigTemplate_ac6c426d9d4792de69d764b92914c39d119626e652cedaa866f3e576d02
 <html>
     <head>
         <meta charset=\"UTF-8\">
+\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
         <title>{% block title %}Marquitos Mubis{% endblock %}</title>
         {% block stylesheets %}
             <script src=\"https://kit.fontawesome.com/a076d05399.js\"></script>
